@@ -11,7 +11,36 @@ const topPhonesAndTables = (async () => {
     html = await page.content();
     await browser.close();
 
-    console.log(html);
+    const $ = cheerio.load(html);
+    const phoneSection = $('.products > .-gallery');
+    topPhones = [];
+
+    phoneSection.each(function() {
+      if (
+        $(this)
+          .find('.name')
+          .text()
+      ) {
+        const name = $(this)
+          .find('.name')
+          .text();
+
+        const price = $(this)
+          .find('.price span[dir="ltr"]')
+          .first()
+          .text();
+
+        const image = $(this).find('.image')[0].attribs['data-src'];
+
+        topPhones.push({
+          image,
+          name,
+          price,
+        });
+      }
+    });
+
+    console.log(topPhones);
   } catch (err) {
     console.log(err);
   }
