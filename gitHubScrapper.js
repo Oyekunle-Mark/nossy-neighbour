@@ -33,7 +33,7 @@ const redditNews = (async () => {
       });
     });
 
-    console.log(topRepos);
+    return topRepos;
   } catch (err) {
     console.log(err);
   }
