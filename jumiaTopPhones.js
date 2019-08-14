@@ -40,8 +40,10 @@ const topPhonesAndTables = (async () => {
       }
     });
 
-    console.log(topPhones);
+    return topPhones;
   } catch (err) {
     console.log(err);
   }
 })();
+
+topPhonesAndTables.then(data => console.log(data));
