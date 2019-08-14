@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 const url = 'https://github.com/Oyekunle-Mark';
 
-const redditNews = (async () => {
+const gitHubTopRepos = (async () => {
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -21,7 +21,7 @@ const redditNews = (async () => {
         .text();
       const description = $(this)
         .find('.pinned-item-desc')
-        .text();
+        .text().trim();
       const language = $(this)
         .find('span[itemprop="programmingLanguage"]')
         .text();
@@ -33,10 +33,10 @@ const redditNews = (async () => {
       });
     });
 
-    console.log(topRepos);
+    return topRepos;
   } catch (err) {
     console.log(err);
   }
 })();
 
-redditNews.then(data => console.log(data));
+gitHubTopRepos.then(data => console.log(data));
