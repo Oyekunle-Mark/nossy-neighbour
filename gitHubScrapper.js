@@ -21,7 +21,7 @@ const redditNews = (async () => {
         .text();
       const description = $(this)
         .find('.pinned-item-desc')
-        .text();
+        .text().trim();
       const language = $(this)
         .find('span[itemprop="programmingLanguage"]')
         .text();
