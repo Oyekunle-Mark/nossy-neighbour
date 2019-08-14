@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 const url = 'https://github.com/Oyekunle-Mark';
 
-const redditNews = (async () => {
+const gitHubTopRepos = (async () => {
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -39,4 +39,4 @@ const redditNews = (async () => {
   }
 })();
 
-redditNews.then(data => console.log(data));
+gitHubTopRepos.then(data => console.log(data));
